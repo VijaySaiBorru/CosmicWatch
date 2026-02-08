@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: cosmicwatch-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - DB_URL=mongodb://mongo:27017/cosmicwatch
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=${JWT_SECRET:-secret}
+      - NASA_API_KEY=${NASA_API_KEY}
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - app-network
+
+  redis:
+    image: redis:alpine
+    container_name: cosmicwatch-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: cosmicwatch-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:latest
+    container_name: cosmicwatch-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+  redis-data:

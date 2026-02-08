@@ -10,6 +10,7 @@ const initializeSocketServer = (server) => {
                 "http://localhost:3000",
                 "http://localhost:5173",
                 "https://cosmic-watch-rho.vercel.app",
+                "https://cosmic-watch-oljq02ing-vijay-sai-borrus-projects.vercel.app",
                 process.env.FRONTEND_URL
             ].filter(Boolean),
             credentials: true,

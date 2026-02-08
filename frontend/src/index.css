@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --space-black: #000000;
+  --deep-space: #0a0a0f;
+  --void-dark: #0d0d15;
+  --nebula-dark: #13131d;
+
+  --cosmic-blue: #1e3a8a;
+  --stellar-blue: #2563eb;
+  --bright-blue: #3b82f6;
+  --sky-blue: #60a5fa;
+
+  --nebula-purple: #4c1d95;
+  --cosmic-purple: #6d28d9;
+  --stellar-purple: #8b5cf6;
+  --light-purple: #a78bfa;
+
+  --star-white: #ffffff;
+  --moon-silver: #e2e8f0;
+  --meteor-gray: #94a3b8;
+  --asteroid-gray: #64748b;
+
+  --mercury-silver: #94a3b8;
+  --venus-gold: #fcd34d;
+  --earth-blue: #0ea5e9;
+  --mars-red: #dc2626;
+  --jupiter-orange: #f97316;
+  --saturn-yellow: #fbbf24;
+  --uranus-cyan: #06b6d4;
+  --neptune-deep-blue: #1e3a8a;
+
+  --glow-blue: rgba(59, 130, 246, 0.6);
+  --glow-purple: rgba(139, 92, 246, 0.6);
+  --glow-cyan: rgba(6, 182, 212, 0.6);
+  --glow-pink: rgba(236, 72, 153, 0.6);
+  --glow-red: rgba(239, 68, 68, 0.6);
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--deep-space);
+  color: var(--moon-silver);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+main {
+  padding-top: 80px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--star-white);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--meteor-gray);
+}
+
+a {
+  color: var(--stellar-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--sky-blue);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(150px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-sm {
+  0% {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--glow-blue),
+      0 0 40px var(--glow-blue),
+      0 0 60px var(--glow-blue);
+  }
+
+  50% {
+    box-shadow: 0 0 30px var(--glow-blue),
+      0 0 60px var(--glow-blue),
+      0 0 90px var(--glow-blue);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(-100px) translateY(100px);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(1000px) translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px var(--glow-blue);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px var(--glow-purple);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+.glow-red {
+  box-shadow: 0 0 20px var(--glow-red);
+}
+
+.gradient-cosmic {
+  background: linear-gradient(135deg, var(--cosmic-blue), var(--cosmic-purple));
+}
+
+.gradient-nebula {
+  background: linear-gradient(135deg, var(--nebula-purple), var(--stellar-purple), var(--cosmic-blue));
+}
+
+.gradient-space {
+  background: linear-gradient(180deg, var(--deep-space), var(--void-dark), var(--space-black));
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--sky-blue), var(--stellar-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit 20s linear infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+  animation: rotate 20s linear infinite;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.section-space {
+  padding: var(--spacing-2xl) 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--stellar-blue), var(--cosmic-purple));
+  color: var(--star-white);
+  box-shadow: 0 4px 15px var(--glow-blue);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px var(--glow-purple);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--stellar-blue);
+  color: var(--sky-blue);
+}
+
+.btn-secondary:hover {
+  background: var(--stellar-blue);
+  color: var(--star-white);
+  box-shadow: 0 0 20px var(--glow-blue);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--stellar-blue);
+  box-shadow: 0 10px 40px var(--glow-blue);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--asteroid-gray);
+  border-radius: var(--radius-sm);
+  color: var(--star-white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--stellar-blue);
+  box-shadow: 0 0 0 3px var(--glow-blue);
+}
+
+.input::placeholder {
+  color: var(--asteroid-gray);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+
+  .grid-cols-2,
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--void-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cosmic-purple);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--stellar-purple);
+}

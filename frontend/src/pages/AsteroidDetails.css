@@ -1,0 +1,564 @@
+.asteroid-details-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 6rem 1.5rem 4rem;
+}
+
+.asteroid-planets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.asteroid-planet-1 {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    animation: float 10s ease-in-out infinite;
+}
+
+.asteroid-planet-2 {
+    position: absolute;
+    bottom: 25%;
+    left: 8%;
+    animation: float 12s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+.asteroid-planet-3 {
+    position: absolute;
+    top: 45%;
+    right: 5%;
+    animation: float 14s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.asteroid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: -100px;
+}
+
+.nav-back {
+    margin-bottom: 2rem;
+}
+
+.back-link {
+    color: var(--stellar-blue);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-link:hover {
+    color: var(--sky-blue);
+    transform: translateX(-5px);
+}
+
+.message-banner {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 500;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.message-banner.success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #4ade80;
+}
+
+.message-banner.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.asteroid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.header-content {
+    flex: 1;
+}
+
+.asteroid-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--sky-blue), var(--stellar-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.asteroid-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+}
+
+.badge-hazardous {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.badge-safe {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.metrics-section,
+.approach-section,
+.links-section,
+.technical-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--star-white);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform var(--transition-normal);
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--meteor-gray);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--star-white);
+    font-family: 'Outfit', sans-serif;
+}
+
+.approach-card {
+    padding: 2rem;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.approach-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.approach-label {
+    font-size: 0.875rem;
+    color: var(--meteor-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.approach-value {
+    font-size: 1.125rem;
+    color: var(--moon-silver);
+    font-weight: 600;
+}
+
+.links-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.nasa-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-card {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px var(--glow-blue);
+}
+
+.link-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.link-text {
+    flex: 1;
+}
+
+.link-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--star-white);
+    margin-bottom: 0.25rem;
+}
+
+.link-subtitle {
+    font-size: 0.875rem;
+    color: var(--meteor-gray);
+}
+
+.link-arrow {
+    font-size: 1.5rem;
+    color: var(--stellar-blue);
+    transition: transform var(--transition-fast);
+}
+
+.link-card:hover .link-arrow {
+    transform: translateX(5px);
+}
+
+.technical-card {
+    padding: 2rem;
+}
+
+.technical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.technical-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.technical-label {
+    font-size: 0.875rem;
+    color: var(--meteor-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.technical-value {
+    font-size: 1rem;
+    color: var(--moon-silver);
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.loading-container,
+.error-container {
+    text-align: center;
+    padding: 6rem 2rem;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    border: 4px solid rgba(139, 92, 246, 0.2);
+    border-top-color: var(--stellar-purple);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+}
+
+.error-container h1 {
+    margin-bottom: 1rem;
+}
+
+.error-container p {
+    font-size: 1.125rem;
+    color: var(--meteor-gray);
+    margin-bottom: 2rem;
+}
+
+.visualization-section {
+    margin-bottom: 3rem;
+    transition: all 0.3s ease;
+}
+
+.visualization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+
+.header-main-info {
+    flex: 1;
+}
+
+.vis-usage-desc {
+    font-size: 0.85rem;
+    color: var(--moon-silver);
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+.vis-actions-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.vis-quick-controls {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--meteor-gray);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vis-quick-controls span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.visualization-header .section-title {
+    margin-bottom: 0;
+}
+
+.expand-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--star-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.vis-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.header-action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--moon-silver);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-action-btn:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.4);
+    color: var(--star-white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.header-action-btn:active {
+    transform: translateY(0);
+}
+
+.reset-btn {
+    color: var(--meteor-gray);
+}
+
+.reset-btn:hover {
+    background: rgba(96, 165, 250, 0.2);
+    border-color: rgba(96, 165, 250, 0.4);
+}
+
+.expand-btn {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+.expand-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--star-white);
+}
+
+.visualization-card {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.visualization-expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    background: black;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.visualization-expanded .visualization-header {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2001;
+    width: auto;
+    margin: 0;
+}
+
+.visualization-expanded .section-title {
+    display: none;
+}
+
+.visualization-expanded .visualization-card {
+    flex: 1;
+    height: auto;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    backdrop-filter: none;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.visualization-expanded .visualization-card>div {
+    flex: 1;
+    height: 100% !important;
+}
+
+.visualization-expanded .expand-btn {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border-color: rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 2002;
+}
+
+.visualization-expanded .expand-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+@media (max-width: 768px) {
+    .asteroid-details-page {
+        padding: 5rem 1rem 3rem;
+    }
+
+    .asteroid-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .asteroid-title {
+        font-size: 1.75rem;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-grid,
+    .technical-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .link-card {
+        padding: 1rem;
+    }
+
+    .asteroid-planet-2,
+    .asteroid-planet-3 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .metric-icon,
+    .link-icon {
+        font-size: 2rem;
+    }
+
+    .metric-value {
+        font-size: 1.125rem;
+    }
+}

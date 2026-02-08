@@ -1,0 +1,78 @@
+.glow-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.glow-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-color);
+}
+
+.glow-card:hover::before {
+    opacity: 0.1;
+}
+
+.glow-card-blue {
+    --glow-color: rgba(59, 130, 246, 0.6);
+    --border-color: #3b82f6;
+}
+
+.glow-card-blue:hover {
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+}
+
+.glow-card-purple {
+    --glow-color: rgba(139, 92, 246, 0.6);
+    --border-color: #8b5cf6;
+}
+
+.glow-card-purple:hover {
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+}
+
+.glow-card-red {
+    --glow-color: rgba(239, 68, 68, 0.6);
+    --border-color: #ef4444;
+}
+
+.glow-card-red:hover {
+    box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3);
+}
+
+.glow-card-cyan {
+    --glow-color: rgba(6, 182, 212, 0.6);
+    --border-color: #06b6d4;
+}
+
+.glow-card-cyan:hover {
+    box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3);
+}
+
+.glow-card-yellow {
+    --glow-color: rgba(251, 191, 36, 0.6);
+    --border-color: #fbbf24;
+}
+
+.glow-card-yellow:hover {
+    box-shadow: 0 10px 40px rgba(251, 191, 36, 0.3);
+}

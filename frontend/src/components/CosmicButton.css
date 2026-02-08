@@ -1,0 +1,103 @@
+.cosmic-button {
+    position: relative;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cosmic-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cosmic-button-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cosmic-button-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: 1;
+}
+
+.cosmic-button:hover:not(:disabled) .cosmic-button-glow {
+    width: 300px;
+    height: 300px;
+}
+
+.cosmic-button-primary {
+    background: linear-gradient(135deg, #2563eb, #6d28d9);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
+}
+
+.cosmic-button-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
+}
+
+.cosmic-button-secondary {
+    background: transparent;
+    border: 2px solid #2563eb;
+    color: #60a5fa;
+}
+
+.cosmic-button-secondary:hover:not(:disabled) {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.cosmic-button-danger {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
+}
+
+.cosmic-button-danger:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(239, 68, 68, 0.6);
+}
+
+.cosmic-button-success {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.6);
+}
+
+.cosmic-button-success:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(34, 197, 94, 0.6);
+}
+
+.cosmic-button-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.cosmic-button-medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.cosmic-button-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}

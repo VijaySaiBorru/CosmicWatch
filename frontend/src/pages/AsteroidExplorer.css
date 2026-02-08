@@ -1,0 +1,120 @@
+.explorer-page {
+    padding: 3rem 1.5rem;
+    min-height: 100vh;
+}
+
+.explorer-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.date-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Align inputs and buttons at bottom */
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.date-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.date-input-group label {
+    color: var(--meteor-gray);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.cosmic-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.cosmic-input:focus {
+    outline: none;
+    border-color: var(--stellar-blue);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Fix for calendar icon visibility in dark mode */
+.cosmic-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cosmic-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.asteroids-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.loading-container {
+    text-align: center;
+    padding: 4rem;
+    color: var(--meteor-gray);
+}
+
+.error-message {
+    text-align: center;
+    color: var(--mars-red);
+    padding: 2rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* SEARCH & BUTTONS */
+.search-group {
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.buttons-group {
+    flex-direction: row;
+    align-items: flex-end;
+    /* Align with inputs */
+    gap: 1rem;
+    padding-bottom: 2px;
+    /* Visual alignment with inputs */
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-info {
+    color: var(--meteor-gray);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+}

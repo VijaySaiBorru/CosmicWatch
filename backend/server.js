@@ -27,6 +27,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:5173",
+    "https://cosmic-watch-rho.vercel.app",
     process.env.FRONTEND_URL, // Vercel URL
   ].filter(Boolean),
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],

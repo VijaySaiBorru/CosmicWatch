@@ -118,3 +118,27 @@
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
 }
+
+@media (max-width: 768px) {
+    .date-search-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.5rem;
+    }
+
+    .date-input-group,
+    .search-group {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .buttons-group {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+
+    .buttons-group button {
+        flex: 1;
+    }
+}

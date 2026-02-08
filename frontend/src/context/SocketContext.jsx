@@ -49,6 +49,7 @@ export const SocketProvider = ({ children }) => {
         
         const newSocket = io(baseUrl, {
             autoConnect: false,
+            transports: ['websocket', 'polling'],
             auth: { token }
         });
 

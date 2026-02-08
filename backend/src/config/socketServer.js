@@ -6,8 +6,14 @@ let io;
 const initializeSocketServer = (server) => {
     io = socketIo(server, {
         cors: {
-            origin: process.env.FRONTEND_URL || "http://localhost:5173",
+            origin: [
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "https://cosmic-watch-rho.vercel.app",
+                process.env.FRONTEND_URL
+            ].filter(Boolean),
             credentials: true,
+            methods: ["GET", "POST"]
         },
     });
 

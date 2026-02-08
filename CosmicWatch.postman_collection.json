@@ -12,32 +12,135 @@
         {
           "name": "Register",
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"astro_enthusiast\",\r\n  \"email\": \"user@gmail.com\",\r\n  \"password\": \"SecurePassword123\",\r\n  \"about\": \"Interested in astronomy\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "if (response.token) {\r",
+                  "    pm.environment.set(\"jwtToken\", response.token);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"user@gmail.com\", \"password\": \"SecurePassword123\"}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Forgot Password",
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/forgot-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "forgot-password"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Reset Password",
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"newPassword\": \"NewSecurePassword456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/reset-password/:token",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "reset-password",
+                ":token"
+              ],
+              "variable": [
+                {
+                  "key": "token",
+                  "value": ""
+                }
+              ]
+            }
           },
           "response": []
         }
@@ -49,40 +152,170 @@
         {
           "name": "Get Profile",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": []
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "profile"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Update",
           "request": {
-            "method": "GET",
-            "header": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODZlMGVkNmI1Mjc4ODQxZjdiNDI2ZSIsImVtYWlsIjoidmlqYXlAZ21haWwuY29tIiwiaWF0IjoxNzcwNDQ3MjMxLCJleHAiOjE3NzA1MzM2MzF9.f3H8TRsRitQ8Izx_EuMemL0nTpzmNP67tgbE3U8ldaI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Vijay Sai Borru\",\r\n  \"about\": \"Actively tracking near-earth asteroids\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/user/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "user",
+                "profile"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Add Asteroid to watchlist",
           "request": {
-            "method": "GET",
-            "header": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODZlMGVkNmI1Mjc4ODQxZjdiNDI2ZSIsImVtYWlsIjoidmlqYXlAZ21haWwuY29tIiwiaWF0IjoxNzcwNDQ3MjMxLCJleHAiOjE3NzA1MzM2MzF9.f3H8TRsRitQ8Izx_EuMemL0nTpzmNP67tgbE3U8ldaI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/user/watchlist/54580776",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "user",
+                "watchlist",
+                "54580776"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Get watchlist",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODZlMGVkNmI1Mjc4ODQxZjdiNDI2ZSIsImVtYWlsIjoidmlqYXlAZ21haWwuY29tIiwiaWF0IjoxNzcwNDQ3MjMxLCJleHAiOjE3NzA1MzM2MzF9.f3H8TRsRitQ8Izx_EuMemL0nTpzmNP67tgbE3U8ldaI",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/user/watchlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "user",
+                "watchlist"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "Remove Asteroid from watchlist",
           "request": {
-            "method": "GET",
-            "header": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODZlMGVkNmI1Mjc4ODQxZjdiNDI2ZSIsImVtYWlsIjoidmlqYXlAZ21haWwuY29tIiwiaWF0IjoxNzcwNDQ3MjMxLCJleHAiOjE3NzA1MzM2MzF9.f3H8TRsRitQ8Izx_EuMemL0nTpzmNP67tgbE3U8ldaI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/user/watchlist/54580776",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "user",
+                "watchlist",
+                "54580776"
+              ]
+            }
           },
           "response": []
         }
@@ -95,7 +328,36 @@
           "name": "NeoWS",
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "https://api.nasa.gov/neo/rest/v1/feed?start_date=2026-02-07&end_date=2026-02-07&api_key=y6YcLG8PvE2Wah676Z5gAmAOVDyeqIBt3KrW5obf",
+              "protocol": "https",
+              "host": [
+                "api",
+                "nasa",
+                "gov"
+              ],
+              "path": [
+                "neo",
+                "rest",
+                "v1",
+                "feed"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "2026-02-07"
+                },
+                {
+                  "key": "end_date",
+                  "value": "2026-02-07"
+                },
+                {
+                  "key": "api_key",
+                  "value": "y6YcLG8PvE2Wah676Z5gAmAOVDyeqIBt3KrW5obf"
+                }
+              ]
+            }
           },
           "response": []
         },
@@ -103,7 +365,28 @@
           "name": "Get Asteroids feed",
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/asteroids/feed?startDate=2023-10-01&endDate=2023-10-07",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "asteroids",
+                "feed"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-10-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-10-07"
+                }
+              ]
+            }
           },
           "response": []
         },
